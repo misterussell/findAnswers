@@ -38,18 +38,24 @@ var britishStuff = items.filter(getByPounds).map(getTitle) + ' costs ' + items.f
 
 // Display a list of all items who are made of wood.
 function getByMaterial(item, i, arr) {
-  return item.materials.join('').indexOf('wood') === 0;
+  return item.materials.join(' ').indexOf('wood') === 0;
   // return item.materials.indexOf('wood') === 0;
 }
 // console.log(items[1].materials.join(' ').indexOf('wood'));
 var pinocchio = items.filter(getByMaterial);
-console.log(pinocchio);
+// console.log(pinocchio);
 // var test = items[1].materials.join('');
-// console.log(test);
-// console.log(test.join(''));
 
 
 // Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
+function materialCount(item, i, arr) {
+  return item.materials.length >= 8;
+}
+
+function getName
+
+var lotsOfParts = items.filter(materialCount);
+console.log(lotsOfParts);
 
 
 // How many items were made by their sellers?
