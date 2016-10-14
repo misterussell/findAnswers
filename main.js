@@ -29,14 +29,33 @@ var withinPriceRange = items.filter(getByPrice).map(getTitle);
 // console.log(withinPriceRange);
 
 // Which item has a "GBP" currency code? Display it's name and price.
-function getCurrency(item, i, arr) {
+function getByPounds(item, i, arr) {
   return item.currency_code === "GBP";
 }
 
+var britishStuff = items.filter(getByPounds).map(getTitle) + ' costs ' + items.filter(getByPounds).map(getPrice);
+// console.log(britishStuff);
+
 // Display a list of all items who are made of wood.
+function getByMaterial(item, i, arr) {
+  return item.materials.join('').indexOf('wood') === 0;
+  // return item.materials.indexOf('wood') === 0;
+}
+// console.log(items[1].materials.join(' ').indexOf('wood'));
+var pinocchio = items.filter(getByMaterial);
+console.log(pinocchio);
+// var test = items[1].materials.join('');
+// console.log(test);
+// console.log(test.join(''));
 
 
 // Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
 
 
 // How many items were made by their sellers?
+
+function getByMaker(item, i, arr) {
+  return item.who_made === 'i_did';
+}
+
+var handMade =  items.filter(getByMaker);
