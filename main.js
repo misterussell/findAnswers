@@ -1,5 +1,18 @@
 //Storage variables
 var answers = [];
+var ul = $('ul');
+
+//DOM manipulator function
+function addToList(answer, i, arr) {
+  // console.log('hi');
+  var $addLi = $('<li>' + answer + '</li>');
+  // var $addLiWithBreaks = $('<li>' + answer.replace("+", "<br />") + '</li>');
+  // if (typeof(answer) === 'object') {
+    // ul.append($addLiWithBreaks);
+  // } else {
+    ul.append($addLi);
+  // }
+}
 
 //AVG Price of all items
 // The average price is $23.63
@@ -27,16 +40,19 @@ function getTitle(item, i, arr) {
 
 var withinPriceRange = items.filter(getByPrice).map(getTitle);
 // console.log(withinPriceRange);
+// answers.push(withinPriceRange.join('\n'));
+answers.push(withinPriceRange);
 
 // Which item has a "GBP" currency code? Display it's name and price.
 function getByPounds(item, i, arr) {
   return item.currency_code === "GBP";
 }
 
-var britishStuff = items.filter(getByPounds).map(getTitle) + ' costs ' + items.filter(getByPounds).map(getPrice);
+var britishStuff = items.filter(getByPounds).map(getTitle) + ' costs &#163;' + items.filter(getByPounds).map(getPrice);
 // console.log(britishStuff);
+answers.push(britishStuff);
 
-// Display a list of all items who are made of wood.
+// UNFINISHED - Display a list of all items who are made of wood.
 function getByMaterial(item, i, arr) {
   return item.materials.join(' ').indexOf('wood') === 0;
   // return item.materials.indexOf('wood') === 0;
@@ -45,6 +61,7 @@ function getByMaterial(item, i, arr) {
 var pinocchio = items.filter(getByMaterial);
 // console.log(pinocchio);
 // var test = items[1].materials.join('');
+// answers.push(pinocchio);
 
 
 // Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
@@ -52,11 +69,15 @@ function materialCount(item, i, arr) {
   return item.materials.length >= 8;
 }
 
-function getName
+function getNameAndItems(item, i, arr) {
+  var newObj = [];
+  newObj.title = item.title;
+  newObj.items = item.materials;
+  return newObj;
+}
 
-var lotsOfParts = items.filter(materialCount);
-console.log(lotsOfParts);
-
+var lotsOfParts = items.filter(materialCount).map(getNameAndItems);
+answers.push(lotsOfParts);
 
 // How many items were made by their sellers?
 
@@ -65,3 +86,12 @@ function getByMaker(item, i, arr) {
 }
 
 var handMade =  items.filter(getByMaker);
+var handMadeAnswer = handMade.length + ' were made by their sellers';
+// console.log(handMade.length);
+answers.push(handMadeAnswer);
+
+//add to HTML
+answers.forEach(addToList);
+console.log(answers);
+// console.log(typeof(answers[0]));
+// console.log(typeof(answers[1]));
