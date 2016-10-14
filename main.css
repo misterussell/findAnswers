@@ -1,0 +1,36 @@
+body {
+  width: 100%;
+  text-align: center;
+  font-family: helvetica, sans-serif;
+}
+
+header {
+  display: block;
+  content: " ";
+  clear: both;
+}
+
+ul {
+  clear: both;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: #EEEEEE;
+  padding: 3vw 0 3vw 0;
+  display: block;
+}
+img {
+  width:100%;
+  padding: 0;
+  margin: 0;
+  float: left;
+}
+
+footer {
+  background-color: #4B484F;
+  padding-top: 2vw;
+  color: #8e8e8e;
+}

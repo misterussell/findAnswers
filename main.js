@@ -63,7 +63,6 @@ var pinocchio = items.filter(getByMaterial);
 // var test = items[1].materials.join('');
 // answers.push(pinocchio);
 
-
 // Which items are made of eight or more materials? Display the name, number of items and the items it is made of.
 function materialCount(item, i, arr) {
   return item.materials.length >= 8;
